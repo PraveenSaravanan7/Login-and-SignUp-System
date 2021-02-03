@@ -65,7 +65,8 @@ router.route('/:id')
 })
 .put(authJWT,(req,res,next) => {
   if(req.user.admin){
-  Users.updateOne({_id:req.user.userid},req.body)
+    const uid= req.params.id;
+  Users.updateOne({_id:uid},req.body)
   .then((users) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
